@@ -1,0 +1,39 @@
+{
+    "name": "tadao-ando",
+    "version": "1.0.0",
+    "description": "Architect website",
+    "private": true,
+    "browserslist": [
+        "last 1 version",
+        "> .25%",
+        "IE 10"
+    ],
+    "directories": {
+        "doc": "docs"
+    },
+    "scripts": {
+        "prebuild": "rm -rf docs/*",
+        "start": "parcel serve src/index.html --open --out-dir docs",
+        "build": "parcel build src/index.html --out-dir docs --public-url ./",
+        "watch": "parcel watch --out-dir docs src/index.html --no-cache",
+        "deploy": "npm run build && git add . && git commit -a -m 'latest build' && git push origin master"
+    },
+    "devDependencies": {
+        "autoprefixer": "^9.4.9",
+        "cssnano": "^4.1.10",
+        "parcel-bundler": "^1.11.0",
+        "postcss-modules": "^1.4.1",
+        "posthtml-include": "^1.5.0",
+        "sass": "^1.17.2"
+    },
+    "keywords": [
+        "front end",
+        "web",
+        "css",
+        "html",
+        "js",
+        "parceljs"
+    ],
+    "author": "Giovanni Antonio <hello.giolara@gmail.com>",
+    "license": "MIT"
+}

@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tadao Ando</title>
+    <meta
+      name="description"
+      content="Tadao Ando is a self-taught architect born in 1941 in Osaka, Japan."
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap"
+      rel="stylesheet"
+    />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
+    />
+    <!-- <link rel="stylesheet" href="./style.css" /> -->
+    <include src="./src/style.html"> </include>
+  </head>
+  <body>
+    <!-- partial:index.partial.html -->
+    <div class="page" data-theme="" data-scroll="" id="app">
+      <header class="head fx-md">
+        <p class="c">EST. &mdash; 1969</p>
+        <p class="c brand">Tadao Ando</p>
+        <div class="c">
+          <div class="theme-switch c-target" id="theme">
+            <div class="theme-dot c-target"></div>
+          </div>
+        </div>
+      </header>
+      <main>
+        <section class="b relative masthead">
+          <div class="loader-front">
+            <h1 class="main-title">安藤忠雄</h1>
+            <h1 class="main-title">Osaka 1941</h1>
+            <div class="loader-front white">
+              <h1 class="main-title">安藤忠雄</h1>
+              <h1 class="main-title">Osaka 1941</h1>
+            </div>
+          </div>
+          <div id="loader"></div>
+        </section>
+        <section class="fx-md hint">
+          <p class="c">Scroll</p>
+          <p class="c last">/2020</p>
+        </section>
+        <section class="b">
+          <p class="p-body">
+            Tadao Ando is a self-taught architect born in 1941 in Osaka, Japan.
+            Ando's architectural style is said to create a "haiku" effect,
+            emphasizing nothingness and empty space to represent the beauty of
+            simplicity. He favors designing complex spatial circulation while
+            maintaining the appearance of simplicity.
+          </p>
+        </section>
+        <section class="b">
+          <p class="in">Studio Summary</p>
+          <ul class="list h2">
+            <li><span>(51)</span><span>Years of Experience</span></li>
+            <li><span>(19)</span><span>Awards</span></li>
+            <li><span>(168)</span><span>Projects in</span></li>
+            <li><span>(24)</span><span>Countries</span></li>
+          </ul>
+        </section>
+        <section class="b">
+          <p class="in">Selected Works<span id="works-count">(10)</span></p>
+          <ul class="works fx-md" id="xhr-works"></ul>
+        </section>
+        <section class="b"></section>
+        <section class="b">
+          <p class="in">Awards<span id="awards-count"></span></p>
+          <ul class="awards h2" id="xhr-awards"></ul>
+        </section>
+      </main>
+      <footer>
+        <div class="b fx-md fx"></div>
+        <div class="b">
+          <p class="in">General Inquery</p>
+          <h2>
+            <a class="c-target" href="#">+06.6375.1148</a><br /><a
+              class="c-target"
+              href="#"
+              >info@tadao-ando.com</a
+            >
+          </h2>
+          <div class="fx foot">
+            <div class="a">
+              <p class="in">Address</p>
+              <h2>
+                Japan, 〒531-0072 Osaka, Kita Ward, Toyosaki, 2 Chome−5−23 2
+              </h2>
+            </div>
+            <div class="a">
+              <p class="in">Social</p>
+              <h2>
+                <a class="c-target" href="#">Instagram</a><br /><a
+                  class="c-target"
+                  href="#"
+                  >Twitter</a
+                ><br /><a class="c-target" href="#">Newletter</a>
+              </h2>
+            </div>
+            <div class="a">
+              <p class="in">Time &amp; Date</p>
+              <h2>
+                <span id="time"></span><br /><span id="date"></span><br /><span
+                  >Osaka, Japan</span
+                >
+              </h2>
+            </div>
+          </div>
+        </div>
+        <div class="b fx foot-copy">
+          <p>&copy;2020 All rights reserved.</p>
+          <p><a class="c-target" href="#top">Back to top</a></p>
+        </div>
+      </footer>
+    </div>
+    <div id="follower">
+      <div class="cursor"></div>
+    </div>
+    <!-- partial -->
+    <script src="https://unpkg.co/gsap/dist/gsap.min.js"></script>
+    <include src="./src/script.html"></include>
+  </body>
+</html>
