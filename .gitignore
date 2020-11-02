@@ -1,7 +1,7 @@
 .DS_Store
 node_modules
 /dist
-sw.js
+# sw.js
 sw.script.html
 sw.sh
 # local env files
