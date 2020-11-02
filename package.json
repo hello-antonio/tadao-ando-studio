@@ -14,7 +14,8 @@
     "scripts": {
         "prebuild": "rm -rf docs/*",
         "start": "parcel serve src/index.html --open --out-dir docs",
-        "build": "parcel build src/index.html --out-dir docs --public-url ./",
+        "build": "parcel build src/index.html --out-dir docs --public-url ./ && npm run build:sw",
+        "build:sw": "bash sw.sh",
         "watch": "parcel watch --out-dir docs src/index.html --no-cache",
         "deploy": "npm run build && git add . && git commit -a -m 'latest build' && git push origin master"
     },

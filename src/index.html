@@ -7,20 +7,35 @@
       name="description"
       content="Tadao Ando is a self-taught architect born in 1941 in Osaka, Japan."
     />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=5"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="robots" content="all" />
+    <link
+      rel="manifest"
+      href="/site.webmanifest"
+      crossorigin="use-credentials"
+    />
+    <meta name="msapplication-TileColor" content="#000" />
+    <meta name="theme-color" content="#100001" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap"
+      rel="preload"
+      as="style"
+      onload="this.rel = 'stylesheet'"
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=DM+Sans&display=swap"
       rel="stylesheet"
     />
-
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css"
-    />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
-    <!-- <link rel="stylesheet" href="./style.css" /> -->
-    <include src="./src/style.html"> </include>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+    <include src="./src/base.html"></include>
+    <include src="./src/style.html"></include>
   </head>
+
   <body>
     <!-- partial:index.partial.html -->
     <div class="page" data-theme="" data-scroll="" id="app">
@@ -127,5 +142,6 @@
     <!-- partial -->
     <script src="https://unpkg.co/gsap/dist/gsap.min.js"></script>
     <include src="./src/script.html"></include>
+    <script id="sw.script.js"></script>
   </body>
 </html>
