@@ -6,9 +6,10 @@ importScripts(
 
 // Network First
 [
-  "/$", // Index
-  "/*", // Anything in the same host
-  ".+/*", // Anything in any host
+  "/docs/$", // Index
+  // "/$", // Index
+  "/docs/*", // Anything in the same host
+  "/docs/.+/*", // Anything in any host
 ].forEach((mask) => {
   workbox.routing.registerRoute(
     new RegExp(mask),
