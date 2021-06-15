@@ -6,6 +6,7 @@
   "display": "standalone",
   "scope": "/tadao-ando-site",
   "theme_color": "#100001",
+  "prefer_related_applications": false,
   "icons": [
     {
       "src": "./icon-192.png",
