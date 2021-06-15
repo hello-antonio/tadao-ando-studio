@@ -1,0 +1,105 @@
+
+-var newYear = new Date().getFullYear()
+
+div(data-theme="", data-scroll="").page#app
+	header.head.fx-md.mask
+		.c since /1969
+		.c.brand
+			|Tadao Ando
+		.c
+			.theme-switch#theme.c-target
+				.theme-text (mode)
+				.theme-dot
+	main
+		section.b.relative.masthead
+			h1
+				.main-title.mask
+					div 安藤忠雄
+				.main-title.mask
+					div Osaka 1941	
+
+		section.fx-md.hint.mask
+			.c Scroll
+			.c.last /2020
+		section.b
+			p.in.h0 architect
+			p.p-body Tadao Ando is a self-taught architect born in 1941 in Osaka, Japan. Ando's architectural style is said to create a "haiku" effect, emphasizing nothingness and empty space to represent the beauty of simplicity. He favors designing complex spatial circulation while maintaining the appearance of simplicity.
+		section.b
+			p.in.h0 Studio Summary
+			ul.list.h2
+				li
+					span (51)
+					span Years of Experience
+				li
+					span (19)
+					span Awards
+				li
+					span (168)
+					span Projects in
+				li
+					span (24)
+					span Countries
+					
+		section(data-scroll-view).b
+			p.in.h0
+				|Selected Works
+				span#works-count
+			ul.works#xhr-works.fx-md
+				
+		section.b
+		
+		section.b
+			p.in.h0
+				|Awards
+				span#awards-count
+			
+			ul.awards.h2#xhr-awards
+	footer
+		.b.fx-md.fx
+			//- h1 Contact	
+		.b
+			p.in.h0 General Inquery
+			h2
+				a(href="#").c-target +06.6375.1148
+				br
+				a(href="#").c-target info@tadao-ando.com
+			.fx.foot
+				.a
+					p.in Address
+					h2.
+						Japan, 〒531-0072 Osaka,
+						#[br]Kita Ward, Toyosaki, 
+						2 Chome−5−23 2
+				.a
+					p.in Social
+					
+					h2
+						a(href="#").c-target Instagram
+						br
+						a(href="#").c-target Twitter
+						br
+						a(href="#").c-target Newletter
+				.a
+					p.in Time &amp; Date
+					h2
+						span#time
+						br
+						span#date
+						br
+						span Osaka, Japan
+		.b.fx.foot-copy
+			p &copy;#{newYear} Tadao Ando All rights reserved. 
+			p
+				a(href="#top").c-target Back to top
+#cursor-wrapper
+	.cursor
+#loader
+	.loader-wrapper
+		h1
+			.mask
+				div 安藤忠雄
+		.loader-sub
+			.mask
+				div#progress 000
+			.mask
+				div LOADED
