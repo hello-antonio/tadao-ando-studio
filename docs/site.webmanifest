@@ -1,7 +1,7 @@
 {
   "name": "Tadao Ando Architect",
   "short_name": "TA",
-  "start_url": "/",
+  "start_url": "/tadao-ando-site/",
   "background_color": "#100001",
   "display": "standalone",
   "theme_color": "#100001",
