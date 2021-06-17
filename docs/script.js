@@ -3,7 +3,7 @@
   // GLOBALS
   //=======================================================================================
   const body = document.body;
-  const id = l => document.getElementById(l);
+  const id = (l) => document.getElementById(l);
   const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 
   const elLoader = id("loader");
@@ -20,13 +20,14 @@
   function updateTime() {
     const date = new Date();
     const now = new Date(
-    date.toLocaleString("en-US", { timeZone: "Asia/Tokyo", hour12: true }));
+      date.toLocaleString("en-US", { timeZone: "Asia/Tokyo", hour12: true })
+    );
 
     timeEl.textContent =
-    `0${now.getHours()}`.slice(-2) +
-    ":" +
-    `0${now.getMinutes()}`.slice(-2) +
-    `${now.toLocaleTimeString().slice(-2)}`;
+      `0${now.getHours()}`.slice(-2) +
+      ":" +
+      `0${now.getMinutes()}`.slice(-2) +
+      `${now.toLocaleTimeString().slice(-2)}`;
     let day = now.getDate();
     let month = date.toLocaleDateString("en-US", { month: "long" });
     dateEl.textContent = `${month} ${day}, ${now.getFullYear()}`;
@@ -41,16 +42,16 @@
   // FETCH
   //=======================================================================================
   async function fetchData(url) {
-    return await fetch(url).
-    then(res => res.json()).
-    then(res => {
-      const data = res.data;
-      return data;
-    }).
-    catch(err => console.log(err));
+    return await fetch(url)
+      .then((res) => res.json())
+      .then((res) => {
+        const data = res.data;
+        return data;
+      })
+      .catch((err) => console.log(err));
   }
   function html(d, t, fn) {
-    d.map(n => {
+    d.map((n) => {
       t.innerHTML += fn(n);
     });
   }
@@ -131,15 +132,17 @@
     }
 
     events() {
-      document.addEventListener("touchmove", e => e.stopPropagation(), {
-        passive: true });
+      document.addEventListener("touchmove", (e) => e.stopPropagation(), {
+        passive: true,
+      });
 
       window.addEventListener("resize", this.resize.bind(this), {
-        passive: true });
+        passive: true,
+      });
 
       document.addEventListener("scroll", this.scroll.bind(this), {
-        passive: true });
-
+        passive: true,
+      });
     }
 
     scroll() {
@@ -191,8 +194,8 @@
       this.styles();
       this.events();
       this.loop();
-    }}
-
+    }
+  }
 
   //=======================================================================================
   // READY
@@ -210,17 +213,15 @@
   // RENDERER
   //=======================================================================================
   function initRender() {
-    renderData("https://api.npoint.io/187c28e6918dfea73fca", data => {
-      html(data.projects, id("xhr-works"), d => {
+    renderData("https://api.npoint.io/187c28e6918dfea73fca", (data) => {
+      html(data.projects, id("xhr-works"), (d) => {
         return `
 				<li>
 				 	<div class="info">
 						<h2>${("00" + (d.id + 1)).slice(-3)}</h2>
 					</div>
 					<div class="img c-target">
-						<img class="c-target" src="${d.image.url}" alt="${
-        d.caption
-        }" crossorigin/>
+						<img class="c-target" src="${d.image.url}" alt="${d.caption}" crossorigin/>
 					</div>
 					<div class="info">
 						<p>${d.caption}</p>
@@ -231,7 +232,7 @@
       id("works-count").textContent = " (" + data.projects.length + ")";
       id("awards-count").textContent = " (" + data.awards.length + ")";
 
-      html(data.awards, id("xhr-awards"), d => {
+      html(data.awards, id("xhr-awards"), (d) => {
         return `<li>
             <span class="award-l">/${d.date}</span> <span class="award-r">${d.award}</span>
           </li>`;
@@ -243,10 +244,10 @@
 
   // LOADER PROGRESS
   let progress = {
-    percent: 0 };
+    percent: 0,
+  };
 
-
-  window.addEventListener("load", e => {
+  window.addEventListener("load", (e) => {
     let imagesResized = false;
 
     const tl = gsap.timeline({ onComplete: loaderOut });
@@ -266,87 +267,90 @@
           } else {
             gsap.set(body, { height: "inherit", overflow: "auto" });
           }
-        } });
+        },
+      });
 
-      tl.
-      to(
-      elLoader,
-      {
-        duration: 0.6,
-        y: "-100%",
-        visibility: "hidden",
-        ease: "power2.easeIn" },
+      tl.to(
+        elLoader,
+        {
+          duration: 0.6,
+          y: "-100%",
+          // visibility: "hidden",
+          ease: "power2.easeIn",
+        },
 
-      "+=1").
+        "+=1"
+      )
+        .from(
+          elApp,
+          {
+            duration: 0.6,
+            y: "50vh",
+            opacity: 0,
+            ease: "power2.easeOut",
+          },
 
-      from(
-      elApp,
-      {
-        duration: 0.6,
-        y: "50vh",
-        opacity: 0,
-        ease: "power2.easeOut" },
+          "-=.5"
+        )
+        .to(
+          "#app .mask div",
+          {
+            y: 0,
+            opacity: 1,
+            stagger: {
+              each: 0.1,
+              ease: "power2.easeOut",
+            },
+          },
 
-      "-=.5").
-
-      to(
-      "#app .mask div",
-      {
-        y: 0,
-        opacity: 1,
-        stagger: {
-          each: 0.1,
-          ease: "power2.easeOut" } },
-
-
-      "-=0.3").
-
-      to(elLoader, { opacity: 0, visibility: "hidden" });
+          "-=0.3"
+        )
+        .to(elLoader, { opacity: 0 });
     }
 
     setTimeout(function () {
-      [...document.querySelectorAll("img")].forEach(img => {
+      [...document.querySelectorAll("img")].forEach((img) => {
         let w = img.naturalWidth,
-        h = img.naturalHeight;
+          h = img.naturalHeight;
         img.setAttribute("width", w);
         img.setAttribute("height", h);
         img.parentElement.style.maxWidth = w + "px";
       });
 
       // 	GSAP LOADER
-      tl.
-      to("#loader .mask div", {
+      tl.to("#loader .mask div", {
         y: 0,
         opacity: 1,
         stagger: {
           each: 0.1,
-          ease: "power2.easeOut" } }).
+          ease: "power2.easeOut",
+        },
+      })
+        .to(elLoaderWrapper, {
+          duration: 0.5,
+          opacity: 1,
+        })
+        .to(progress, {
+          duration: 1,
+          percent: 100,
+          onUpdate() {
+            let percent = `00${Math.ceil(progress.percent)}`.slice(-3);
+            elLoaderProgress.textContent = percent;
+          },
+        })
+        .to(
+          "#loader .mask div",
+          {
+            y: "-100%",
+            opacity: 0,
+            stagger: {
+              each: 0.1,
+              ease: "power2.easeIn",
+            },
+          },
 
-
-      to(elLoaderWrapper, {
-        duration: 0.5,
-        opacity: 1 }).
-
-      to(progress, {
-        duration: 1,
-        percent: 100,
-        onUpdate() {
-          let percent = `00${Math.ceil(progress.percent)}`.slice(-3);
-          elLoaderProgress.textContent = percent;
-        } }).
-
-      to(
-      "#loader .mask div",
-      {
-        y: "-100%",
-        opacity: 0,
-        stagger: {
-          each: 0.1,
-          ease: "power2.easeIn" } },
-
-
-      "+=1");
-
+          "+=1"
+        );
     }, 1000);
 
     //
@@ -358,15 +362,15 @@
 
       // 			STUFF TO DO IF NOT ON MOBILE DEVICE
       if (!isMobile) {
-        window.addEventListener("mousemove", e => {
+        window.addEventListener("mousemove", (e) => {
           gsap.to(elCursorWrapper, 0.6, {
             x: e.clientX,
             y: e.clientY,
-            ease: "out" });
-
+            ease: "out",
+          });
         });
 
-        body.addEventListener("mouseover", e => {
+        body.addEventListener("mouseover", (e) => {
           let t = e.target;
 
           if (t.classList.contains("c-target")) {

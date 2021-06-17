@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>Tadao Ando</title>
+    <link
+      rel="canonical"
+      href="https://thecalicoder.github.io/tadao-ando-site/index.html"
+    />
     <meta
       name="description"
       content="Tadao Ando is a self-taught architect born in 1941 in Osaka, Japan."
@@ -318,13 +322,15 @@
     <script>
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
-          navigator.serviceWorker.register("sw.js");
+          navigator.serviceWorker.register("/tadao-ando-site/sw.js", {
+            scope: "/tadao-ando-sie/",
+          });
         });
       }
     </script>
 
     <!-- partial -->
-    <script src="https://unpkg.co/gsap/dist/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.0.0/gsap.min.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
