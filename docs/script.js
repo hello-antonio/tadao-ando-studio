@@ -22,7 +22,6 @@
     const now = new Date(
       date.toLocaleString("en-US", { timeZone: "Asia/Tokyo", hour12: true })
     );
-
     timeEl.textContent =
       `0${now.getHours()}`.slice(-2) +
       ":" +
@@ -135,11 +134,9 @@
       document.addEventListener("touchmove", (e) => e.stopPropagation(), {
         passive: true,
       });
-
       window.addEventListener("resize", this.resize.bind(this), {
         passive: true,
       });
-
       document.addEventListener("scroll", this.scroll.bind(this), {
         passive: true,
       });
@@ -197,15 +194,28 @@
     }
   }
 
+  // Resize Images
+  function initImages() {
+    setTimeout(() => {      
+      Array.from(document.querySelectorAll("img")).forEach((img, i) => {
+        img.setAttribute("width", img.naturalWidth);
+        img.setAttribute("height", img.naturalHeight);
+      });
+    }, 1000);
+  }
   //=======================================================================================
   // READY
   //=======================================================================================
+
   // HTML READY
+
   if (document.readyState !== "loading") {
     initRender();
+    initImages();
   } else {
     window.addEventListener("DOMContentLoaded", function (e) {
       initRender();
+      initImages();
     });
   }
 
@@ -248,9 +258,7 @@
   };
 
   window.addEventListener("load", (e) => {
-    let imagesResized = false;
-
-    const tl = gsap.timeline({ onComplete: loaderOut });
+    const enterTl = gsap.timeline({ onComplete: loaderOut });
     const elApp = id("app");
 
     gsap.set(elCursor, { transformOrigin: "center", scale: 1 });
@@ -275,10 +283,8 @@
         {
           duration: 0.6,
           y: "-100%",
-          // visibility: "hidden",
           ease: "power2.easeIn",
         },
-
         "+=1"
       )
         .from(
@@ -289,7 +295,6 @@
             opacity: 0,
             ease: "power2.easeOut",
           },
-
           "-=.5"
         )
         .to(
@@ -302,23 +307,16 @@
               ease: "power2.easeOut",
             },
           },
-
           "-=0.3"
         )
-        .to(elLoader, { opacity: 0 });
+        .to(elLoader, {
+          opacity: 0,
+        });
     }
 
-    setTimeout(function () {
-      [...document.querySelectorAll("img")].forEach((img) => {
-        let w = img.naturalWidth,
-          h = img.naturalHeight;
-        img.setAttribute("width", w);
-        img.setAttribute("height", h);
-        img.parentElement.style.maxWidth = w + "px";
-      });
-
-      // 	GSAP LOADER
-      tl.to("#loader .mask div", {
+    // 	GSAP LOADER
+    enterTl
+      .to(".loader-wrapper .mask div", {
         y: 0,
         opacity: 1,
         stagger: {
@@ -326,32 +324,26 @@
           ease: "power2.easeOut",
         },
       })
-        .to(elLoaderWrapper, {
-          duration: 0.5,
-          opacity: 1,
-        })
-        .to(progress, {
-          duration: 1,
-          percent: 100,
-          onUpdate() {
-            let percent = `00${Math.ceil(progress.percent)}`.slice(-3);
-            elLoaderProgress.textContent = percent;
+      .to(progress, {
+        duration: 1.5,
+        percent: 100,
+        onUpdate() {
+          let percent = `00${Math.ceil(progress.percent)}`.slice(-3);
+          elLoaderProgress.textContent = percent;
+        },
+      })
+      .to(
+        ".loader-wrapper .mask div",
+        {
+          y: "-100%",
+          opacity: 0,
+          stagger: {
+            each: 0.1,
+            ease: "power2.easeIn",
           },
-        })
-        .to(
-          "#loader .mask div",
-          {
-            y: "-100%",
-            opacity: 0,
-            stagger: {
-              each: 0.1,
-              ease: "power2.easeIn",
-            },
-          },
-
-          "+=1"
-        );
-    }, 1000);
+        },
+        "+=.5"
+      );
 
     //
     //

@@ -530,7 +530,7 @@ header {
 }
 
 .mask {
-  visibility: inherit;
+  visibility: visible;
   overflow: hidden;
   line-height: 1;
   margin: 1vh 0;
